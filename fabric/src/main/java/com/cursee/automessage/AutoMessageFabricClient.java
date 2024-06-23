@@ -26,11 +26,6 @@ public class AutoMessageFabricClient implements ClientModInitializer {
                 playerData.playtime = payload.playtime();
                 playerData.soft_counts = payload.soft_counts();
                 playerData.hard_counts = payload.hard_counts();
-
-                System.out.println("client received initial sync with values playtime, soft_counts, hard_counts");
-                System.out.println(payload.playtime());
-                System.out.println(Arrays.toString(payload.soft_counts()));
-                System.out.println(Arrays.toString(payload.hard_counts()));
             });
         });
         ClientPlayNetworking.registerGlobalReceiver(FabricPlaytimeDataPayload.ID, (payload, context) -> {

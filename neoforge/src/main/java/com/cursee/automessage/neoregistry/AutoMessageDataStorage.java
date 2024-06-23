@@ -1,6 +1,7 @@
-package com.cursee.automessage.core.capability;
+package com.cursee.automessage.neoregistry;
 
 import com.cursee.automessage.Constants;
+import com.cursee.automessage.neocommon.capability.AutoMessageProperties;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;

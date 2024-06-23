@@ -1,8 +1,9 @@
-package com.cursee.automessage.core.capability;
+package com.cursee.automessage.neocommon.capability;
 
-import com.cursee.automessage.core.Config;
-import com.cursee.automessage.core.networking.Networking;
-import com.cursee.automessage.core.networking.messages.MessageSyncAutoMessageSettings;
+import com.cursee.automessage.config.Config;
+import com.cursee.automessage.neonetwork.Networking;
+import com.cursee.automessage.neonetwork.messages.MessageSyncAutoMessageSettings;
+import com.cursee.automessage.neoregistry.AutoMessageDataStorage;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
@@ -12,23 +13,23 @@ import org.jetbrains.annotations.UnknownNullability;
 public class AutoMessageProperties implements INBTSerializable<CompoundTag> {
 	
 	public int playtime;
-	public int[] softCounts;
-	public int[] hardCounts;
+	public long[] soft_counts;
+	public long[] hard_counts;
 	
 	public AutoMessageProperties() {
 		this.playtime = 0;
-		this.softCounts = new int[Config.messages.size()];
-		this.hardCounts = new int[Config.messages.size()];
+		this.soft_counts = new long[Config.messages.size()];
+		this.hard_counts = new long[Config.messages.size()];
 	}
 	
 	public void clone(AutoMessageProperties settings) {
 		this.playtime = settings.playtime;
-		this.softCounts = settings.softCounts;
-		this.hardCounts = settings.hardCounts;
+		this.soft_counts = settings.soft_counts;
+		this.hard_counts = settings.hard_counts;
 	}
 	
 	public void sync(ServerPlayer player) {
-		Networking.sendTo(player, new MessageSyncAutoMessageSettings(this));
+		Networking.sendTo(player, new MessageSyncAutoMessageSettings(this.playtime, this.soft_counts, this.hard_counts));
 	}
 	
 	public static void syncFor(ServerPlayer player) {
@@ -56,32 +57,32 @@ public class AutoMessageProperties implements INBTSerializable<CompoundTag> {
 	
 	public void incrementPlaytime() { this.playtime++; }
 	public int getPlaytime() { return this.playtime; }
-	public int[] getSoftCounts() { return this.softCounts; }
-	public int[] getHardCounts() { return this.hardCounts; }
+	public long[] getSoftCounts() { return this.soft_counts; }
+	public long[] getHardCounts() { return this.hard_counts; }
 	
 	public void incrementSoftCountAtIndex(int index) {
-		this.softCounts[index]++;
+		this.soft_counts[index]++;
 	}
 	
 	public void incrementHardCountAtIndex(int index) {
-		this.hardCounts[index]++;
+		this.hard_counts[index]++;
 	}
 
 	@Override
 	public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
-		CompoundTag tag = new CompoundTag();
+		CompoundTag nbt = new CompoundTag();
 
-		tag.putInt("playtime", this.playtime);
-		tag.putIntArray("softCounts", this.softCounts);
-		tag.putIntArray("hardCounts", this.hardCounts);
+		nbt.putInt("playtime", this.playtime);
+		nbt.putLongArray("soft_counts", this.soft_counts);
+		nbt.putLongArray("hard_counts", this.hard_counts);
 
-		return tag;
+		return nbt;
 	}
 
 	@Override
-	public void deserializeNBT(HolderLookup.Provider provider, CompoundTag tag) {
-		this.playtime = tag.getInt("playtime");
-		this.softCounts = tag.getIntArray("softCounts");
-		this.hardCounts = tag.getIntArray("hardCounts");
+	public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
+		this.playtime = nbt.getInt("playtime");
+		this.soft_counts = nbt.getLongArray("soft_counts");
+		this.hard_counts = nbt.getLongArray("hard_counts");
 	}
 }

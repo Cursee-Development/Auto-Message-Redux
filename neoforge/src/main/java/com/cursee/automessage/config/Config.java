@@ -1,4 +1,4 @@
-package com.cursee.automessage.core;
+package com.cursee.automessage.config;
 
 import com.cursee.automessage.Constants;
 import com.cursee.monolib.platform.Services;

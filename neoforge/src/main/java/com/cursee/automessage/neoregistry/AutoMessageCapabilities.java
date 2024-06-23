@@ -1,4 +1,4 @@
-package com.cursee.automessage.core.capability;
+package com.cursee.automessage.neoregistry;
 
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
