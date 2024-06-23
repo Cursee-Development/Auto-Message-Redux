@@ -72,6 +72,7 @@ dependencies {
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
 
     implementation "curse.maven:monolib-968432:5456852"
+//    implementation fg.deobf("curse.maven:monolib-968432:5456852")
 }
 
 tasks.named('compileJava', JavaCompile).configure {

@@ -3,15 +3,14 @@ package com.cursee.automessage;
 import com.cursee.automessage.core.Config;
 import com.cursee.automessage.core.capability.MessagingCapability;
 import com.cursee.automessage.core.capability.MessagingProvider;
+import com.cursee.monolib.core.MonoLibConfiguration;
 import com.cursee.monolib.core.sailing.Sailing;
-import net.jason13.monolib.methods.BlockMethods;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -19,7 +18,6 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -39,6 +37,12 @@ public class AutoMessageForge {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
+    public static void debug(String message) {
+        if (MonoLibConfiguration.debugging) {
+            Constants.LOG.info(message);
+        }
+    }
+
     public void onRegisterCapabilitiesEvent(RegisterCapabilitiesEvent event) {
         event.register(MessagingCapability.class);
     }
@@ -46,11 +50,15 @@ public class AutoMessageForge {
     @SubscribeEvent
     public void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event)
     {
-        if (event.getObject() instanceof Player)
-        {
-            if (!event.getObject().getCapability(MessagingProvider.PLAYER_MESSAGING_CAPABILITY).isPresent())
-            {
+        if (event.getObject() instanceof Player) {
+
+            debug("attaching capability to player");
+
+            if (!event.getObject().getCapability(MessagingProvider.PLAYER_MESSAGING_CAPABILITY).isPresent()) {
+                debug("attached fresh capability to player");
                 event.addCapability(new ResourceLocation(Constants.MOD_ID, "properties"), new MessagingProvider());
+            } else {
+                debug("did not find capability present on player");
             }
         }
     }
@@ -103,7 +111,12 @@ public class AutoMessageForge {
                 original.reviveCaps();
 
                 original.getCapability(MessagingProvider.PLAYER_MESSAGING_CAPABILITY).ifPresent(oldStore -> {
+
+                    debug("capability found on old player");
+
                     event.getEntity().getCapability(MessagingProvider.PLAYER_MESSAGING_CAPABILITY).ifPresent(newStore -> {
+
+                        debug("found capability on new player? shouldn't be possible I think but whatever");
                         newStore.copyFrom(oldStore);
                     });
                 });
