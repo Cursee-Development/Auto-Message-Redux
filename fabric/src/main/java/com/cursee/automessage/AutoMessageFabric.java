@@ -24,10 +24,10 @@ import java.util.Arrays;
 
 public class AutoMessageFabric implements ModInitializer {
 
-    public static final ResourceLocation INITIAL_SYNC = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "initial_sync");
-    public static final ResourceLocation PLAYTIME = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "playtime");
-    public static final ResourceLocation SOFT_COUNTS = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "soft_counts");
-    public static final ResourceLocation HARD_COUNTS = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "hard_counts");
+    public static final ResourceLocation INITIAL_SYNC = new ResourceLocation(Constants.MOD_ID, "initial_sync");
+    public static final ResourceLocation PLAYTIME = new ResourceLocation(Constants.MOD_ID, "playtime");
+    public static final ResourceLocation SOFT_COUNTS = new ResourceLocation(Constants.MOD_ID, "soft_counts");
+    public static final ResourceLocation HARD_COUNTS = new ResourceLocation(Constants.MOD_ID, "hard_counts");
 
     @Override
     public void onInitialize() {

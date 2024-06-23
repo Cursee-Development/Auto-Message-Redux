@@ -50,7 +50,7 @@ public class AutoMessageForge {
         {
             if (!event.getObject().getCapability(MessagingProvider.PLAYER_MESSAGING_CAPABILITY).isPresent())
             {
-                event.addCapability(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "properties"), new MessagingProvider());
+                event.addCapability(new ResourceLocation(Constants.MOD_ID, "properties"), new MessagingProvider());
             }
         }
     }

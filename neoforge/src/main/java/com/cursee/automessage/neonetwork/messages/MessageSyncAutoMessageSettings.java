@@ -17,7 +17,7 @@ import net.minecraft.world.entity.player.Player;
 
 public record MessageSyncAutoMessageSettings(int playtime, long[] soft_counts, long[] hard_counts) implements IMessage {
 
-	public static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "sync_familiar_settings");
+	public static final ResourceLocation ID = new ResourceLocation(Constants.MOD_ID, "sync_familiar_settings");
 
 	public static final Type<MessageSyncAutoMessageSettings> TYPE = new Type<>(ID);
 
