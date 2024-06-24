@@ -16,7 +16,7 @@ public class Config {
     public static final File CONFIG_DIRECTORY = new File(Services.PLATFORM.getGameDirectory() + File.separator + "config");
     public static final String CONFIG_FILEPATH = CONFIG_DIRECTORY + File.separator + Constants.MOD_ID + ".toml";
 
-    public static boolean enabled = true;
+    public static boolean enabled = false;
     public static List<String> messages = List.of("Sends after five seconds, only once ever", "Sends after 6 seconds, 5 times every session");
     public static List<String> links = List.of("https://www.google.com", "https://www.yahoo.com");
     public static List<Long> intervals = List.of(5L, 6L);
