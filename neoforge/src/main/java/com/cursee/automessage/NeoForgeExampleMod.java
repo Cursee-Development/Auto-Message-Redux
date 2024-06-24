@@ -5,6 +5,7 @@ import com.cursee.automessage.config.Config;
 import com.cursee.automessage.neocommon.capability.AutoMessageProperties;
 import com.cursee.automessage.neonetwork.Networking;
 import com.cursee.automessage.neoregistry.AutoMessageDataStorage;
+import com.cursee.monolib.core.sailing.Sailing;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -31,6 +32,8 @@ public class NeoForgeExampleMod {
         // Use NeoForge to bootstrap the Common mod.
         Constants.LOG.info("Hello NeoForge world!");
         AutoMessage.init();
+        Sailing.register(Constants.MOD_NAME, Constants.MOD_ID, Constants.MOD_VERSION, Constants.MC_VERSION_RAW, Constants.PUBLISHER_AUTHOR, Constants.PRIMARY_CURSEFORGE_MODRINTH);
+        Config.initialize();
         
         INSTANCE = this;
 //        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC, "automessage-common.toml");
