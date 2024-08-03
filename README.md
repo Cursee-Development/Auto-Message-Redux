@@ -2,10 +2,6 @@
 
 Basically, AutoMessage is responsible for adding an option to create and send messages automatically in a fast and effective way. To do this, it adds a configuration file that can be modified from start to finish by the player, and that, for example, will allow them to promote their social networks when starting a game, or simply thank them for downloading.
 
-[**![](https://www.bisecthosting.com/images/CF/Auto_Message/BH_AM_PromoCard.webp)**](https://bisecthosting.com/Lupin)
-
-If you are looking for a server to play any mod or modpack with your friends, [**Bisect Hosting**](https://bisecthosting.com/Lupin) is your solution! They have the best quality-price Minecraft servers, and if you click on **[this link](https://bisecthosting.com/Lupin)** you will get a 25% discount, using the code "Lupin".  
-
 ![](https://www.bisecthosting.com/images/CF/Auto_Message/BH_AM_Summary.webp)
 
 This mod is intended for two types of people, either the creators of mod packs, or on the other hand, the creators of multiplayer servers, since it is in charge of facilitating the sending of automatic messages.
