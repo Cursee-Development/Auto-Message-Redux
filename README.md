@@ -51,8 +51,4 @@ Of course! As long as it is published only on Modrinth or CurseForge. Uploading 
 
 However, we are really grateful if you consider adding it to your Modrinth or CurseForge modpack. If you need any small changes or have any questions, contact us!
 
-**![](https://www.bisecthosting.com/images/CF/Auto_Message/BH_AM_Screenshots.webp)**
-
-![](https://media.forgecdn.net/attachments/676/939/2023-06-13_21.png)
-
 [**![](https://www.bisecthosting.com/images/CF/MultiRecipe/BH_Lupin_Discord.webp)**](https://discord.gg/X8VY5WMbe4)
