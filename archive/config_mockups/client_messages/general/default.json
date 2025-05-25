@@ -1,0 +1,16 @@
+[
+  {
+    "id": "tip_hopper",
+    "type": "chat",
+    "text": "Use hoppers to move items automatically.",
+    "delaySeconds": 300,
+    "repeat": true
+  },
+  {
+    "id": "tip_light",
+    "type": "action_bar",
+    "text": "Keep your area well-lit to avoid mobs!",
+    "delaySeconds": 600,
+    "repeat": true
+  }
+]
