@@ -6,6 +6,6 @@ public class AutoMessageClientFabric implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-
+        AutoMessageClient.init();
     }
 }

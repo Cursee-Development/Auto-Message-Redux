@@ -4,5 +4,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 
 public class AutoMessageClientForge {
 
-    public AutoMessageClientForge(final IEventBus modEventBus) {}
+    public AutoMessageClientForge(final IEventBus modEventBus) {
+        AutoMessageClient.init();
+    }
 }
