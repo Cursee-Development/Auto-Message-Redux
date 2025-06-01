@@ -11,4 +11,6 @@ public class Constants {
 	public static final String MOD_PUBLISHER = "Lupin";
 	public static final String MOD_URL = "https://www.curseforge.com/minecraft/mc-mods/automessage";
 	public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
+
+	public static final String FIRST_JOIN_TAG = Constants.MOD_ID + ".firstJoin";
 }

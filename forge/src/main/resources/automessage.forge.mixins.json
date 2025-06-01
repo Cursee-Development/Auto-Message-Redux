@@ -4,9 +4,15 @@
     "package": "com.cursee.automessage.mixin",
     "refmap": "${mod_id}.refmap.json",
     "compatibilityLevel": "JAVA_17",
-    "mixins": [],
-    "client": [],
-    "server": [],
+    "mixins": [
+        "LivingEntityMixin"
+    ],
+    "client": [
+        "LocalPlayerMixin"
+    ],
+    "server": [
+        "ServerPlayerMixin"
+    ],
     "injectors": {
         "defaultRequire": 1
     }
