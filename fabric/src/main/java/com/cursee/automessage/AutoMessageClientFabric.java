@@ -9,10 +9,11 @@ public class AutoMessageClientFabric implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        AutoMessageClient.init(Minecraft.getInstance());
 
         ClientEntityEvents.ENTITY_LOAD.register((entity, clientLevel) -> {
             if (!(entity instanceof LocalPlayer player) || clientLevel == null) return;
+
+            AutoMessageClient.init(Minecraft.getInstance());
 
             AutoMessageClient.onFirstJoinLevel(player, clientLevel);
             AutoMessageClient.onJoinLevel(player, clientLevel);

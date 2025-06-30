@@ -18,7 +18,7 @@ public class AutoMessageForge {
         AutoMessage.init();
         EVENT_BUS = context.getModEventBus();
         ModRegistryForge.register(EVENT_BUS);
-        if (FMLEnvironment.dist == Dist.CLIENT) new AutoMessageClientForge(EVENT_BUS);
+        if (FMLEnvironment.dist == Dist.CLIENT) MinecraftForge.EVENT_BUS.addListener(AutoMessageClientForge::new);
         MinecraftForge.EVENT_BUS.addListener(AutoMessageServerForge::new);
     }
 

@@ -94,6 +94,10 @@ public class ServerMessageService {
                             List<Message> loaded = gson.fromJson(msgReader, listType);
 
                             loaded.forEach(message -> {
+
+                                // must be replaced
+                                if (message.text.contains("§")) message.text = message.text.replaceAll("§", "\u00A7");
+
                                 instance.MESSAGES_FROM_SCHEDULE_MAP.get(message.schedule).add(message);
                                 atomicInteger.incrementAndGet();
                             });
@@ -114,10 +118,10 @@ public class ServerMessageService {
 
             List<List<?>> lists = instance.allMessageLists();
 
-            if (MessageServiceUtil.areAllListsEmpty(lists)) {
-                Constants.LOG.info("[SERVER] No messages loaded from files. Falling back to defaults.");
-                MessageServiceUtil.loadFallbackMessages(gson);
-            }
+//            if (MessageServiceUtil.areAllListsEmpty(lists)) {
+//                Constants.LOG.info("[SERVER] No messages loaded from files. Falling back to defaults.");
+//                MessageServiceUtil.loadFallbackMessages(gson);
+//            }
         }
 
         long end = System.nanoTime();

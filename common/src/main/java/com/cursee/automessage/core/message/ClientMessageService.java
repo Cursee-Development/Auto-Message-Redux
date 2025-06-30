@@ -61,7 +61,9 @@ public class ClientMessageService {
 
         if (configFile.isFile()) {
             try (FileReader reader = new FileReader(configFile)) {
-                if (instance == null || !Services.PLATFORM.isClientSide()) instance = gson.fromJson(reader, ClientMessageService.class);
+                if (instance == null || !Services.PLATFORM.isClientSide()) {
+                    instance = gson.fromJson(reader, ClientMessageService.class);
+                }
                 instance.initMaps();
             }
             catch (IOException e) {
@@ -91,6 +93,10 @@ public class ClientMessageService {
                             List<Message> loaded = gson.fromJson(msgReader, listType);
 
                             loaded.forEach(message -> {
+
+                                // must be replaced
+                                if (message.text.contains("§")) message.text = message.text.replaceAll("§", "\u00A7");
+
                                 instance.MESSAGES_FROM_SCHEDULE_MAP.get(message.schedule).add(message);
                                 atomicInteger.incrementAndGet();
                             });
@@ -111,10 +117,10 @@ public class ClientMessageService {
 
             List<List<?>> lists = instance.allMessageLists();
 
-            if (MessageServiceUtil.areAllListsEmpty(lists)) {
-                Constants.LOG.info("[CLIENT] No messages loaded from files. Falling back to defaults.");
-                MessageServiceUtil.loadFallbackMessages(gson);
-            }
+//            if (MessageServiceUtil.areAllListsEmpty(lists)) {
+//                Constants.LOG.info("[CLIENT] No messages loaded from files. Falling back to defaults.");
+//                MessageServiceUtil.loadFallbackMessages(gson);
+//            }
         }
 
         long end = System.nanoTime();
